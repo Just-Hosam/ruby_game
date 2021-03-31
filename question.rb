@@ -1,21 +1,27 @@
-def create_question(player)
-  x = rand(1..20)
-  y = rand(1..20)
-  puts "#{player.name}: What does #{x} plus #{y} equal?"
+class Question
+  def initialize(player)
+    run_question(player)
+  end
 
-  x + y
-end
+  def create_question(player)
+    x = rand(1..20)
+    y = rand(1..20)
+    puts "#{player.name}: What does #{x} plus #{y} equal?"
 
-def run_question(player)
-  correct_answer = create_question(player)
+    x + y
+  end
 
-  print "> "
-  answer = gets.chomp.to_i
-
-  if correct_answer == answer
-    puts "Correct"
-  else
-    player.remove_life
-    puts "Wrong!"
+  def run_question(player)
+    correct_answer = create_question(player)
+  
+    print "> "
+    answer = gets.chomp.to_i
+  
+    if correct_answer == answer
+      puts "Correct"
+    else
+      player.remove_life
+      puts "Wrong!"
+    end
   end
 end
